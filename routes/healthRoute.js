@@ -4,7 +4,7 @@ const Health = require('../models/Health');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
 // Obter todas as aquisições
-router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const health = await Health.find();
     res.status(200).json(health);
@@ -13,8 +13,8 @@ router.get('/', isAuthenticated, async (req, res) => {
   }
 });
 
-// Obter uma aquisição por ID
-router.get('/:id', isAuthenticated, async (req, res) => {
+// Obter uma saude por ID
+router.get('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const health = await Health.findById(req.params.id);
     if (!health) {
@@ -26,8 +26,8 @@ router.get('/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-// Criar uma nova aquisição
-router.post('/', isAuthenticated, async (req, res) => {
+// Criar uma nova info de saude
+router.post('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { vacinas, controleParasitas, acompanhamentoVet, descricao} = req.body;
     const newHealth = new Health({ vacinas, controleParasitas, acompanhamentoVet, descricao });
@@ -39,7 +39,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Atualizar uma aquisição por ID
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { vacinas, controleParasitas, acompanhamentoVet, descricao } = req.body;
     const health = await Health.findByIdAndUpdate(

@@ -13,6 +13,7 @@ mongoose.connect(MONGODB_URL, {})
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const compraRouter = require('./routes/compra');
 const acquisitionRouter = require('./routes/acquisitionRoute');
 const feedingRouter = require('./routes/feedingRoute');
 const healthRouter = require('./routes/healthRoute');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/compra', logger, compraRouter); 
 app.use('/acquisition', acquisitionRouter);
 app.use('/feeding', feedingRouter);
 app.use('/health', healthRouter);

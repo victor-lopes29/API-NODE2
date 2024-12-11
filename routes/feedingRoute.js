@@ -5,7 +5,7 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 
 
 // Obter todas as aquisições
-router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const feeding = await feeding.find();
     res.status(200).json(feeding);
@@ -15,7 +15,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 });
 
 // Obter uma alimentação por ID
-router.get('/:id', isAuthenticated, async (req, res) => {
+router.get('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const feeding= await Feeding.findById(req.params.id);
     if (!feeding) {
@@ -28,7 +28,7 @@ router.get('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Criar uma nova alimentação
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { tipoAlimentacao, quantidadeAlimentacao, descricao } = req.body;
     const newFeeding = new Feeding({ tipoAlimentacao, quantidadeAlimentacao, descricao});
@@ -40,7 +40,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Atualizar uma aquisição por ID
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { tipoAlimentacao, quantidadeAlimentacao, descricao } = req.body;
     const feeding = await Feeding.findByIdAndUpdate(
@@ -58,7 +58,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Excluir uma aquisição por ID
-router.delete('/:id', isAuthenticated, async (req, res) => {
+router.delete('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const feeding = await Feeding.findByIdAndDelete(req.params.id);
     if (!feeding) {

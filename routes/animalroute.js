@@ -4,7 +4,7 @@ const Animal = require('../models/Animal');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
 // Obter todas as aquisições
-router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const animal = await Animal.find();
     res.status(200).json(animal);
@@ -14,7 +14,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 });
 
 // Obter uma aquisição por ID
-router.get('/:id', isAuthenticated, async (req, res) => {
+router.get('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const animal = await Animal.findById(req.params.id);
     if (animal) {
@@ -27,7 +27,7 @@ router.get('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Criar uma nova aquisição
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { aquisicaoId, alimentacaoId, saudeId, raca, descricao} = req.body;
     const newAnimal = new Animal({ aquisicaoId, alimentacaoId, saudeId, raca, descricao });
@@ -39,7 +39,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Atualizar uma aquisição por ID
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { aquisicaoId, alimentacaoId, saudeId, raca, descricao } = req.body;
     const animal = await Animal.findByIdAndUpdate(
@@ -57,7 +57,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Excluir uma aquisição por ID
-router.delete('/:id', isAuthenticated, async (req, res) => {
+router.delete('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const animal = await Animal.findByIdAndDelete(req.params.id);
     if (!animal) {

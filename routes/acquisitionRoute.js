@@ -4,7 +4,7 @@ const Acquisition = require('../models/Acquisition');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
 // Obter todas as aquisições
-router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const acquisitions = await Acquisition.find();
     res.status(200).json(acquisitions);
@@ -14,7 +14,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 });
 
 // Obter uma aquisição por ID
-router.get('/:id', isAuthenticated, async (req, res) => {
+router.get('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const acquisition = await Acquisition.findById(req.params.id);
     if (!acquisition) {
@@ -27,7 +27,7 @@ router.get('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Criar uma nova aquisição
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { descricao, aquisicao, reproducao } = req.body;
     const newAcquisition = new Acquisition({ descricao, aquisicao, reproducao });
@@ -39,7 +39,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Atualizar uma aquisição por ID
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { descricao, aquisicao, reproducao } = req.body;
     const acquisition = await Acquisition.findByIdAndUpdate(
@@ -57,7 +57,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Excluir uma aquisição por ID
-router.delete('/:id', isAuthenticated, async (req, res) => {
+router.delete('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const acquisition = await Acquisition.findByIdAndDelete(req.params.id);
     if (!acquisition) {

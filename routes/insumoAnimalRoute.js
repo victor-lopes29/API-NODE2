@@ -4,7 +4,7 @@ const InsumoAnimal = require('../models/InsumoAnimal');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
 // Obter todas as aquisições
-router.get('/', isAuthenticated, async (req, res) => {
+router.get('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const insumoAnimal = await InsumoAnimal.find();
     res.status(200).json(insumoAnimal);
@@ -14,7 +14,7 @@ router.get('/', isAuthenticated, async (req, res) => {
 });
 
 // Obter uma aquisição por ID
-router.get('/:id', isAuthenticated, async (req, res) => {
+router.get('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const insumoAnimal = await InsumoAnimal.findById(req.params.id);
     if (insumoAnimal) {
@@ -27,7 +27,7 @@ router.get('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Criar uma nova aquisição
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { insumoId, animalId } = req.body;
     const newInsumoAnimal = new InsumoAnimal({ insumoId, animalId });
@@ -39,7 +39,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Atualizar uma aquisição por ID
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const { insumoId, animalId } = req.body;
     const insumoAnimal = await InsumoAnimal.findByIdAndUpdate(
@@ -57,7 +57,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Excluir uma aquisição por ID
-router.delete('/:id', isAuthenticated, async (req, res) => {
+router.delete('/:id', /*isAuthenticated,*/ async (req, res) => {
   try {
     const insumoAnimal = await Animal.findByIdAndDelete(req.params.id);
     if (!insumoAnimal) {
