@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Feeding = require('../models/Feeding');
 const isAuthenticated = require('../middlewares/isAuthenticated');
-const Feeding = require('../models/Feeding');
+
 
 // Obter todas as aquisições
 router.get('/', isAuthenticated, async (req, res) => {
