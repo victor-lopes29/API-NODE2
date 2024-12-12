@@ -19,6 +19,8 @@ const feedingRouter = require('./routes/feedingRoute');
 const healthRouter = require('./routes/healthRoute');
 const animalRouter = require('./routes/animalroute');
 const insumoAnimalRouter = require('./routes/insumoAnimalRoute');
+const insumoRouter = require('./routes/insumoRoute');
+const estoqueRouter = require('./routes/estoqueRoute');
 
 const app = express();
 
@@ -36,5 +38,7 @@ app.use('/feeding', feedingRouter);
 app.use('/health', healthRouter);
 app.use('/animal', animalRouter);
 app.use('/insumo-animal', insumoAnimalRouter);
+app.use('/insumo', insumoRouter);
+app.use('/estoque', estoqueRouter);
 
 module.exports = app;
