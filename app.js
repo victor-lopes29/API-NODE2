@@ -42,3 +42,9 @@ app.use('/insumo', insumoRouter);
 app.use('/estoque', estoqueRouter);
 
 module.exports = app;
+
+const PORT = process.env.PORT || 3000; // Define a porta padrão como 3000 ou pega do arquivo .env
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
