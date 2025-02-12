@@ -1,0 +1,17 @@
+
+
+services:
+  apinode2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URL=mongodb+srv://juliatluszcz:TLUgbYF6Beb7yZMl@aulatopicos.ep7it.mongodb.net/?retryWrites=true&w=majority&appName=AulaTopicos
+    volumes:
+      - db_data:/path/in/container
+
+volumes:
+  db_data:
+    driver: local
