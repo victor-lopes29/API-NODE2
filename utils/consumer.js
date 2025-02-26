@@ -15,14 +15,14 @@ const consumeFromQueue = async (queue) => {
         if (msg) {
             const content = msg.content.toString();
             console.log(`📨 Mensagem recebida: ${content}`);
-            channel.ack(msg); // Confirma recebimento da mensagem
+            channel.ack(msg); 
         }
     });
 };
 
 const startConsumer = async () => {
-    channel = await connectRabbitMQ(); // Garante conexão com RabbitMQ
-    await consumeFromQueue("fila_get_animal"); // Substitua pelo nome correto da fila
+    channel = await connectRabbitMQ(); 
+    await consumeFromQueue("fila_get_animal"); 
 };
 
 startConsumer();
